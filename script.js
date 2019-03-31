@@ -146,7 +146,7 @@ function drawText(number,x,y) {
 		ctx.font = ' bold '+subd*.45+ 'px'+ ' Clear Sans ';
 		var c=ctx.fillStyle;
 		ctx.fillStyle="black"
-	  	ctx.fillText(number, x-(subd*.4), y+2);
+	  	ctx.fillText(number, x-(subd*.38), y+(subd*.025));
 	  	ctx.fillStyle=c;
 	}
 }
