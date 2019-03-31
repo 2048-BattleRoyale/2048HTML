@@ -1,0 +1,9 @@
+#game {
+	 border:1px 
+	 solid #000000;
+	 display: inline;
+	 position: absolute;
+	 border-radius: 10px;
+	 width:50%;
+	 
+}
