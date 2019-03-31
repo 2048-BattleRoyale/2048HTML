@@ -122,28 +122,28 @@ function hexJson(number1) {
 function drawText(number,x,y) {
 	console.log(number.toString().length);
 	if (number.toString().length == 1){
-		ctx.font = ' bold 2vw Clear Sans ';
+		ctx.font = ' bold '+subd*.45+ 'px'+ ' Clear Sans ';
 		var c=ctx.fillStyle;
 		ctx.fillStyle="black"
-	  	ctx.fillText(number, x-(subd*.2), y+7);
+	  	ctx.fillText(number, x-(subd*.05), y+subd*.05);
 	  	ctx.fillStyle=c;
 	}
 	if (number.toString().length == 2){
-		ctx.font = ' bold 1.8vw Clear Sans ';
+		ctx.font = ' bold '+subd*.45+ 'px'+ ' Clear Sans ';
 		var c=ctx.fillStyle;
 		ctx.fillStyle="black"
-	  	ctx.fillText(number, x-(subd*.35), y+4);
+	  	ctx.fillText(number, x-(subd*.17), y+subd*.039);
 	  	ctx.fillStyle=c;
 	}
 	if (number.toString().length == 3){
-		ctx.font = 'bold 1.25vw Clear Sans';
+		ctx.font = ' bold '+subd*.45+ 'px'+ ' Clear Sans ';
 		var c=ctx.fillStyle;
 		ctx.fillStyle="black"
-	  	ctx.fillText(number, x-(subd*.34), y+(subd*.05));
+	  	ctx.fillText(number, x-(subd*.27), y+(subd*.025));
 	  	ctx.fillStyle=c;
 	}
 	if (number.toString().length == 4){
-		ctx.font = 'bold 1vw Clear Sans';
+		ctx.font = ' bold '+subd*.45+ 'px'+ ' Clear Sans ';
 		var c=ctx.fillStyle;
 		ctx.fillStyle="black"
 	  	ctx.fillText(number, x-(subd*.4), y+2);
