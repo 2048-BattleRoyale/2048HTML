@@ -1,6 +1,6 @@
 var canvas=document.getElementById('game') // Take the canvas element off of the 
 var ctx = canvas.getContext("2d"); // Necessary for canvas drawing, look up documentation if you find this confusing
-var theme1={ //This is a blue and purple theme. More will be added in the future, selected with html buttons
+var theme2={ //This is a blue and purple theme. More will be added in the future, selected with html buttons
 "2":"c9d1e9",
 "4":"a5b2da",
 "8":"8093cb",
@@ -16,13 +16,29 @@ var theme1={ //This is a blue and purple theme. More will be added in the future
 "8192":"43215e",
 "16384":"281438"
 }
+var theme1={ //This is a blue and pink theme. More will be added in the future, selected with html buttons
+"2":"A8DEF5",
+"4":"AFDBF3",
+"8":"B7D8F2",
+"16":"BFD5F1",
+"32":"C7D2EF",
+"64":"CFCFEE",
+"128":"D6CCED",
+"256":"DEC9EC",
+"512":"E6C6EA",
+"1024":"EEC3E9",
+"2048":"F6C0E8",
+"4096":"FEBEE7",
+"8192":"FF8AD5",
+"16384":"FF47BD"
+}
 //Future themes will go here.
 //Build an extremely purdy font from Google's vaults.
 
 //Create underlying grid lines
 var subdivision= canvas.width/16; 
 function drawGrid(){ 
-	ctx.lineWidth = 2;//Change this for thicker internal lines
+	ctx.lineWidth = 1.5;//Change this for thicker internal lines
      for (i = subdivision; i < subdivision*16; i += subdivision) {
 		   ctx.moveTo(0, i);
 		   ctx.lineTo(canvas.width, i);
@@ -88,7 +104,7 @@ function drawImage(x,y,hex) {
 	if (hex=="0") {
 		ctx.fillStyle = "#ffffff00";
 	}
-	roundRect(subdivision*x,subdivision*y,32,32,5,"#fff","1px") //change to accomodate different grid images
+	roundRect(subdivision*x,subdivision*y,subdivision,subdivision,6,"#fff","1px") //change to accomodate different grid images
 	/*
 	var img = new Image((canvas.width)/16,(canvas.width)/16);
 	img.onload = function() { 
@@ -117,37 +133,46 @@ function hexJson(number1) {
 	return theme1[rando];// When initializing themes, I need to remember to change this number.
 	//console.log(object);
 }
+//Fix this nightmare
 function drawText(number,x,y) {
 	console.log(number.toString().length);
 	if (number.toString().length == 1){
 		ctx.font = 'bold '+subdivision*.45+ 'px'+ ' sans-serif';
 		var c=ctx.fillStyle;
 		ctx.fillStyle="black"
-	  	ctx.fillText(number, x-(subdivision*.05), y+subdivision*.05);
+	  	ctx.fillText(number, x+(subdivision*.36), y+(subdivision*.65));
 	  	ctx.fillStyle=c;
 	}
 	if (number.toString().length == 2){
 		ctx.font = ' bold '+subdivision*.45+ 'px'+ ' sans-serif';
 		var c=ctx.fillStyle;
 		ctx.fillStyle="black"
-	  	ctx.fillText(number, x-(subdivision*.17), y+subdivision*.039);
+	  	ctx.fillText(number, x+(subdivision*.25), y+(subdivision*.65));
 	  	ctx.fillStyle=c;
 	}
 	if (number.toString().length == 3){
 		ctx.font = ' bold '+subdivision*.45+ 'px'+ ' sans-serif';
 		var c=ctx.fillStyle;
 		ctx.fillStyle="black"
-	  	ctx.fillText(number, x-(subdivision*.29), y+(subdivision*.025));
+	  	ctx.fillText(number, x+(subdivision*.135), y+(subdivision*.65));
 	  	ctx.fillStyle=c;
 	}
 	if (number.toString().length == 4){
 		ctx.font = ' bold '+subdivision*.4+ 'px'+ ' sans-serif';
 		var c=ctx.fillStyle;
 		ctx.fillStyle="black"
-	  	ctx.fillText(number, x-(subdivision*.38), y+(subdivision*.025));
+	  	ctx.fillText(number, x+(subdivision*.05), y+(subdivision*.65));
 	  	ctx.fillStyle=c;
 	}
 }
+window.onload = window.onresize = function() {
+    // Init global variables
+    canvas.width = window.innerWidth * 0.4;
+    canvas.height = window.innerWidth * 0.4;
+    ctx = canvas.getContext("2d");
+    subdivision = canvas.width / 16;
+    reDraw();
+};
 //Draw the entire grid
 function reDraw() {
 	var localx=0;
@@ -160,7 +185,7 @@ function reDraw() {
 			hexval="0";
 		}
 		drawImage(localx,localy,hexval);
-		drawText(grid[localx+16*localy],subdivision*localx+13,subdivision*localy+20); //Sparkling lime is sparkling lie
+		drawText(grid[localx+16*localy],subdivision*localx,subdivision*localy); //Sparkling lime is sparkling lie
 		localx+=1;
 		if (localx%2==0) {
 			offset+=1;
