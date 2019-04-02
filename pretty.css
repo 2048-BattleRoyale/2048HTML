@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:700');
+
 #game {
 	 border:1px 
 	 solid #000000;
 	 display: inline;
 	 position: absolute;
 	 border-radius: 10px;
-	 
+	 width: 50%;
+	 font-family: 'Lato', sans-serif;
 	 
 }

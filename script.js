@@ -1,6 +1,6 @@
-var canvas=document.getElementById('game')
-var ctx = canvas.getContext("2d");
-var colors={
+var canvas=document.getElementById('game') // Take the canvas element off of the 
+var ctx = canvas.getContext("2d"); // Necessary for canvas drawing, look up documentation if you find this confusing
+var theme1={ //This is a blue and purple theme. More will be added in the future, selected with html buttons
 "2":"c9d1e9",
 "4":"a5b2da",
 "8":"8093cb",
@@ -16,15 +16,13 @@ var colors={
 "8192":"43215e",
 "16384":"281438"
 }
-window.onload = window.onresize = function() {
-    var canvas = document.getElementById('canvas');
-    canvas.width = window.innerWidth * 0.8;
-    canvas.height = window.innerWidth * 0.8;
-}
+//Future themes will go here.
+//Build an extremely purdy font from Google's vaults.
+
 //Create underlying grid lines
 var subd= canvas.width/16; 
 function drawGrid(){ 
-	ctx.lineWidth = 2;
+	ctx.lineWidth = 2;//Change this for thicker internal lines
      for (i = subd; i < subd*16; i += subd) {
 		   ctx.moveTo(0, i);
 		   ctx.lineTo(canvas.width, i);
@@ -36,7 +34,7 @@ function drawGrid(){
    ctx.stroke();
 }
 drawGrid();
-var grid=[];
+var grid=[]; //Create the array, this should be reinitialized every game, and filled with nulls! That function is yet to be created yet, though, as we haven't built the server stuff to support it yet
 
 
 //Push random multiples of 2
@@ -44,13 +42,13 @@ for (i =1; i<=(16*16+1);i+=1) {
 	//grid.push({owner:"0",number:(2**(Math.floor(Math.random()*12)))})
 	var random=Math.floor(Math.random()*12);
 	var multtwo=2**(random+1);
-	grid.push(multtwo);
+	grid.push(multtwo); //purely for theme testing, if I replace this with nulls, it creates a nice empty grid
 }
 
 document.getElementById("test").innerHTML = grid
 //Rendering Engine Start
 //Return the appropriate image for drawing
-function roundRect(x, y, width, height, radius, fill, stroke) { //still need to implement text, because I suck.
+function roundRect(x, y, width, height, radius, fill, stroke) { //Creates sexy rounded bois. Tastier than lime sparkling water.
   if (typeof stroke == 'undefined') {
     stroke = true;
   }
@@ -116,37 +114,37 @@ function hexJson(number1) {
 	if (number1=="0") {
 		return "FFFF";
 	}
-	return colors[rando];
+	return theme1[rando];// When initializing themes, I need to remember to change this number.
 	//console.log(object);
 }
 function drawText(number,x,y) {
 	console.log(number.toString().length);
 	if (number.toString().length == 1){
-		ctx.font = ' bold '+subd*.45+ 'px'+ ' Clear Sans ';
+		ctx.font = 'bold '+subd*.45+ 'px'+ ' sans-serif';
 		var c=ctx.fillStyle;
 		ctx.fillStyle="black"
 	  	ctx.fillText(number, x-(subd*.05), y+subd*.05);
 	  	ctx.fillStyle=c;
 	}
 	if (number.toString().length == 2){
-		ctx.font = ' bold '+subd*.45+ 'px'+ ' Clear Sans ';
+		ctx.font = ' bold '+subd*.45+ 'px'+ ' sans-serif';
 		var c=ctx.fillStyle;
 		ctx.fillStyle="black"
 	  	ctx.fillText(number, x-(subd*.17), y+subd*.039);
 	  	ctx.fillStyle=c;
 	}
 	if (number.toString().length == 3){
-		ctx.font = ' bold '+subd*.45+ 'px'+ ' Clear Sans ';
+		ctx.font = ' bold '+subd*.45+ 'px'+ ' sans-serif';
 		var c=ctx.fillStyle;
 		ctx.fillStyle="black"
 	  	ctx.fillText(number, x-(subd*.27), y+(subd*.025));
 	  	ctx.fillStyle=c;
 	}
 	if (number.toString().length == 4){
-		ctx.font = ' bold '+subd*.45+ 'px'+ ' Clear Sans ';
+		ctx.font = ' bold '+subd*.45+ 'px'+ ' sans-serif';
 		var c=ctx.fillStyle;
 		ctx.fillStyle="black"
-	  	ctx.fillText(number, x-(subd*.38), y+(subd*.025));
+	  	ctx.fillText(number, x-(subd*.42), y+(subd*.025));
 	  	ctx.fillStyle=c;
 	}
 }
