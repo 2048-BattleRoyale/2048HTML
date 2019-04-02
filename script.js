@@ -20,14 +20,14 @@ var theme1={ //This is a blue and purple theme. More will be added in the future
 //Build an extremely purdy font from Google's vaults.
 
 //Create underlying grid lines
-var subd= canvas.width/16; 
+var subdivision= canvas.width/16; 
 function drawGrid(){ 
 	ctx.lineWidth = 2;//Change this for thicker internal lines
-     for (i = subd; i < subd*16; i += subd) {
+     for (i = subdivision; i < subdivision*16; i += subdivision) {
 		   ctx.moveTo(0, i);
 		   ctx.lineTo(canvas.width, i);
 		  }
-     for (i = subd; i <subd*16; i += subd) {
+     for (i = subdivision; i <subdivision*16; i += subdivision) {
 		   ctx.moveTo(i, 0);
 		   ctx.lineTo(i,canvas.width);
    }
@@ -88,7 +88,7 @@ function drawImage(x,y,hex) {
 	if (hex=="0") {
 		ctx.fillStyle = "#ffffff00";
 	}
-	roundRect(subd*x,subd*y,32,32,5,"#fff","1px") //change to accomodate different grid images
+	roundRect(subdivision*x,subdivision*y,32,32,5,"#fff","1px") //change to accomodate different grid images
 	/*
 	var img = new Image((canvas.width)/16,(canvas.width)/16);
 	img.onload = function() { 
@@ -120,31 +120,31 @@ function hexJson(number1) {
 function drawText(number,x,y) {
 	console.log(number.toString().length);
 	if (number.toString().length == 1){
-		ctx.font = 'bold '+subd*.45+ 'px'+ ' sans-serif';
+		ctx.font = 'bold '+subdivision*.45+ 'px'+ ' sans-serif';
 		var c=ctx.fillStyle;
 		ctx.fillStyle="black"
-	  	ctx.fillText(number, x-(subd*.05), y+subd*.05);
+	  	ctx.fillText(number, x-(subdivision*.05), y+subdivision*.05);
 	  	ctx.fillStyle=c;
 	}
 	if (number.toString().length == 2){
-		ctx.font = ' bold '+subd*.45+ 'px'+ ' sans-serif';
+		ctx.font = ' bold '+subdivision*.45+ 'px'+ ' sans-serif';
 		var c=ctx.fillStyle;
 		ctx.fillStyle="black"
-	  	ctx.fillText(number, x-(subd*.17), y+subd*.039);
+	  	ctx.fillText(number, x-(subdivision*.17), y+subdivision*.039);
 	  	ctx.fillStyle=c;
 	}
 	if (number.toString().length == 3){
-		ctx.font = ' bold '+subd*.45+ 'px'+ ' sans-serif';
+		ctx.font = ' bold '+subdivision*.45+ 'px'+ ' sans-serif';
 		var c=ctx.fillStyle;
 		ctx.fillStyle="black"
-	  	ctx.fillText(number, x-(subd*.27), y+(subd*.025));
+	  	ctx.fillText(number, x-(subdivision*.29), y+(subdivision*.025));
 	  	ctx.fillStyle=c;
 	}
 	if (number.toString().length == 4){
-		ctx.font = ' bold '+subd*.4+ 'px'+ ' sans-serif';
+		ctx.font = ' bold '+subdivision*.4+ 'px'+ ' sans-serif';
 		var c=ctx.fillStyle;
 		ctx.fillStyle="black"
-	  	ctx.fillText(number, x-(subd*.38), y+(subd*.025));
+	  	ctx.fillText(number, x-(subdivision*.38), y+(subdivision*.025));
 	  	ctx.fillStyle=c;
 	}
 }
@@ -160,7 +160,7 @@ function reDraw() {
 			hexval="0";
 		}
 		drawImage(localx,localy,hexval);
-		drawText(grid[localx+16*localy],subd*localx+13,subd*localy+20); //Sparkling lime is sparkling lie
+		drawText(grid[localx+16*localy],subdivision*localx+13,subdivision*localy+20); //Sparkling lime is sparkling lie
 		localx+=1;
 		if (localx%2==0) {
 			offset+=1;
