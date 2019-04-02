@@ -141,10 +141,10 @@ function drawText(number,x,y) {
 	  	ctx.fillStyle=c;
 	}
 	if (number.toString().length == 4){
-		ctx.font = ' bold '+subd*.45+ 'px'+ ' sans-serif';
+		ctx.font = ' bold '+subd*.435+ 'px'+ ' sans-serif';
 		var c=ctx.fillStyle;
 		ctx.fillStyle="black"
-	  	ctx.fillText(number, x-(subd*.42), y+(subd*.025));
+	  	ctx.fillText(number, x-(subd*.43), y+(subd*.025));
 	  	ctx.fillStyle=c;
 	}
 }
