@@ -55,7 +55,6 @@ var grid=[]; //Create the array, this should be reinitialized every game, and fi
 
 //Push random multiples of 2
 for (i =1; i<=(16*16+1);i+=1) {
-	//grid.push({owner:"0",number:(2**(Math.floor(Math.random()*12)))})
 	var random=Math.floor(Math.random()*12);
 	var multtwo=2**(random+1);
 	grid.push(multtwo); //purely for theme testing, if I replace this with nulls, it creates a nice empty grid
@@ -105,13 +104,6 @@ function drawImage(x,y,hex) {
 		ctx.fillStyle = "#ffffff00";
 	}
 	roundRect(subdivision*x,subdivision*y,subdivision,subdivision,6,"#fff","1px") //change to accomodate different grid images
-	/*
-	var img = new Image((canvas.width)/16,(canvas.width)/16);
-	img.onload = function() { 
-	    ctx.drawImage(img, 32*x, 32*y+1);
-	}
-	img.src = "Images/"+ number + ".png";
-	*/
 }
 //Remove all of the heck in the canvas
 function clearCanvas() {
@@ -131,9 +123,8 @@ function hexJson(number1) {
 		return "FFFF";
 	}
 	return theme1[rando];// When initializing themes, I need to remember to change this number.
-	//console.log(object);
+
 }
-//Fix this nightmare
 function drawText(number,x,y) {
 	console.log(number.toString().length);
 	if (number.toString().length == 1){
@@ -190,8 +181,7 @@ function reDraw() {
 		if (localx%2==0) {
 			offset+=1;
 		}
-//		drawImage(0,0,2);
-//		drawImage(2,2,16);
+
 		if (i%16==0 && i!=0) {
 			localy+=1;
 			localx=0;
