@@ -58,7 +58,7 @@ for (i =1; i<=(16*16+1);i+=1) {
 	var random=Math.floor(Math.random()*12);
 	var multtwo=2**(random+1);
 	grid.push(multtwo); //purely for theme testing, if I replace this with nulls, it creates a nice empty grid
-}
+} 
 
 document.getElementById("test").innerHTML = grid
 //Rendering Engine Start
@@ -97,7 +97,7 @@ function roundRect(x, y, width, height, radius, fill, stroke) { //Creates sexy r
   }
 
 }
-function drawImage(x,y,hex) {
+function drawImage(x,y,hex) { //Accomodates for 0s in the grid, which are a real posibility.
 	drawGrid();
 	ctx.fillStyle = hex;
 	if (hex=="0") {
@@ -127,6 +127,9 @@ function hexJson(number1) {
 }
 function drawText(number,x,y) {
 	console.log(number.toString().length);
+	if (number==0) {
+		number='';
+	}
 	if (number.toString().length == 1){
 		ctx.font = 'bold '+subdivision*.45+ 'px'+ ' sans-serif';
 		var c=ctx.fillStyle;
