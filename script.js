@@ -59,10 +59,14 @@ for (i =1; i<=(16*16+1);i+=1) {
 	var multtwo=2**(random+1);
 	grid.push(multtwo); //purely for theme testing, if I replace this with nulls, it creates a nice empty grid
 } 
-
-document.getElementById("test").innerHTML = grid
+score=0;
+for (i=1; i<grid.length;i+=1) {
+	score+=grid[i];
+}
+document.getElementById("test").innerHTML = score;
 //Rendering Engine Start
 //Return the appropriate image for drawing
+
 function roundRect(x, y, width, height, radius, fill, stroke) { //Creates sexy rounded bois. Tastier than lime sparkling water.
   if (typeof stroke == 'undefined') {
     stroke = true;
@@ -126,7 +130,7 @@ function hexJson(number1) {
 
 }
 function drawText(number,x,y) {
-	console.log(number.toString().length);
+	//console.log(number.toString().length);
 	if (number==0) {
 		number='';
 	}
@@ -173,7 +177,7 @@ function reDraw() {
 	var localy=0;
 	var offset=-1;
 	for (var i = 0; i <= 16*16; i++) {
-		console.log(hexJson(grid[localx+16*localy]));
+		//console.log(hexJson(grid[localx+16*localy]));
 		var hexval='#'+(hexJson(grid[localx+16*localy]));
 		if ((grid[localx+16*localy])==0) {
 			hexval="0";
